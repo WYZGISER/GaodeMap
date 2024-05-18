@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地图参数</title>
+    <!-- 引入高度地图 -->
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: "42f3c3c4cb8bdd3b41d9ca4193bdbf27",
+        };
+    </script>
+
+    <script src="https://webapi.amap.com/maps?v=2.0&key=84c217e9ad7bb6321fb3aef3985e6e37"></script>
+
+    <!-- 设置地图样式 -->
+    <style>
+        html,
+        body,
+        #continer{
+            width: 100%;
+            height: 100%;
+            /* background-color: skyblue; */
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- 创建地图容器 -->
+<div id="continer"></div>
+<!-- 加载地图 -->
+<script>
+    //声明一个变量
+    var map = new AMap.Map('continer',{
+        center:[114,23],//设置地图中心点的经纬度
+        zoom:20,//地图的缩放比例(3~20)
+        viewMode:'3D',//打开3D的视觉
+        pitch:45//设置俯视角度
+    })
+</script>
+</body>
+
+</html>
