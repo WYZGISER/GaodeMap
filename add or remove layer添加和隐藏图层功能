@@ -1,0 +1,13 @@
+//添加和隐藏图层功能
+//下面以添加和隐藏路况情况图层为例
+
+//实现实时路况的功能
+        var traffic = new AMap.TileLayer.Traffic({
+            autoRefresh: true,//是否自动刷新
+            interval: 180,//刷新间隔,默认180秒
+        })
+
+        map.add(traffic);//通过add的方法添加图层
+
+        //取消实时路况
+        //map.remove(traffic)；
