@@ -1,0 +1,5 @@
+       //监听地图的点击事件
+        map.on('click',function(event){
+            //console.log(event);
+            console.log(`经度:${event.lnglat.lng},纬度:${event.lnglat.lat}`)
+        })
