@@ -1,0 +1,23 @@
+      // 把监听事件和绘制点相结合起来
+      // 绘制点的实例代码
+      //创建一个maker实例
+      // var marker = new AMap.Marker({
+      //     position: new AMap.LngLat(113,125)
+      // })
+      //将创建的点标记添加到已有的地图实例
+      //map.add(marker)
+
+      //移除标志
+      //map.remove(marker)
+
+
+        //监听地图的点击事件
+        map.on('click', function (event) {
+            console.log(event);
+            //创建一个maker实例
+            var marker = new AMap.Marker({
+                position: event.lnglat//点击事件的坐标
+            })
+            //将创建的点标记添加到已有的地图实例
+            map.add(marker)
+        })
