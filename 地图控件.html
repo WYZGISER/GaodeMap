@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地图控价</title>
+    <!-- 引入高度地图 -->
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: "42f3c3c4cb8bdd3b41d9ca4193bdbf27",
+        };
+    </script>
+
+    <script src="https://webapi.amap.com/maps?v=2.0&key=84c217e9ad7bb6321fb3aef3985e6e37"></script>
+
+    <!-- 设置地图样式 -->
+    <style>
+        html,
+        body,
+        #continer {
+            width: 100%;
+            height: 100%;
+            /* background-color: skyblue; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 创建地图容器 -->
+    <div id="continer"></div>
+    <!-- 加载地图 -->
+    <script>
+        //声明一个变量
+        var map = new AMap.Map('continer', {
+            center: [114, 23],//设置地图中心点的经纬度
+            zoom: 20,//地图的缩放比例(3~20)
+            viewMode: '3D',//打开3D的视觉
+            pitch: 45//设置俯视角度
+        })
+
+
+        //加载控件的步骤
+        //安装插件
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale','AMap.HawkEye','AMap.MapType'], function () {
+
+            //添加控件
+            //ToolBar(工具条):集成缩放,平移,定位
+            map.addControl(new AMap.ToolBar())//通过构造函数添加对象
+
+            //Scale(比例尺):展示地图当前的层级和经纬度下的比例
+            map.addControl(new AMap.Scale())
+
+            //HawkEye(鹰眼):扩大视野的范围
+            map.addControl(new AMap.HawkEye())
+
+            //MapType(地图类型):切换地图的类型.例如切换到卫星地图
+            map.addControl(new AMap.MapType())
+        
+        })//插件是个数组,后面一个回调函数
+    </script>
+</body>
+
+</html>
