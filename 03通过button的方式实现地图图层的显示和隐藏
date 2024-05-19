@@ -1,0 +1,39 @@
+<body>
+    <!-- 通过button的方式实现添加和隐藏的功能 -->
+    <button onclick="add()">显示实时路况</button>
+    <button onclick="remove()">隐藏实时路况</button>
+
+
+    <!-- 创建容器 -->
+    <div id="continer"></div>
+
+    <!-- 加载地图 -->
+    <script>
+        //声明一个变量
+        var map = new AMap.Map('continer', {
+            center: [113, 23],
+            zoom: 12,
+            viewMode: '3D',
+            pitch:45
+            
+        })
+
+        //实现实时路况的功能
+        var traffic = new AMap.TileLayer.Traffic({
+            autoRefresh: true,//是否自动刷新
+            interval: 180,//刷新间隔,默认180秒
+
+        })
+
+
+        //声明一个add函数
+        function add(){
+            map.add(traffic);
+        }
+
+        function remove(){
+            map.remove(traffic);
+        }
+       
+    </script>
+</body>
