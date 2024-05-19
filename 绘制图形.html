@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>高德地图开发入门</title>
+    <!-- 引入高度地图 -->
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: "42f3c3c4cb8bdd3b41d9ca4193bdbf27",
+        };
+    </script>
+
+    <script src="https://webapi.amap.com/maps?v=2.0&key=84c217e9ad7bb6321fb3aef3985e6e37"></script>
+
+    <!-- 设置地图样式 -->
+    <style>
+        html,
+        body,
+        #continer {
+            width: 100%;
+            height: 100%;
+            /* background-color: skyblue; */
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 创建地图容器 -->
+    <div id="continer"></div>
+    <!-- 加载地图 -->
+    <script>
+        //声明一个变量
+        var map = new AMap.Map('continer', {
+            center: [116.39, 39.90],//设置地图中心点的经纬度
+            zoom: 15,//地图的缩放比例(3~20)
+            viewMode: '2D',//打开3D的视觉
+            pitch: 20//设置俯视角度
+        })
+
+        //折线的节点坐标数组，每个元素为 AMap.LngLat 对象
+        var path = [
+            new AMap.LngLat(116.368904, 39.913423),
+            new AMap.LngLat(116.382122, 39.901176),
+            new AMap.LngLat(116.387271, 39.912501),
+            new AMap.LngLat(116.398258, 39.904600)
+        ];
+
+        // 创建折线实例
+        var polyline = new AMap.Polyline({
+            path: path,
+            borderWeight: 2, // 线条宽度，默认为 1
+            strokeColor: 'red', // 线条颜色
+            lineJoin: 'round' // 折线拐点连接处样式
+        });
+
+        // 将折线添加至地图实例
+        map.add(polyline);
+
+
+
+        绘制多边形
+        多边形轮廓线的节点坐标数组
+        var path = [
+            new AMap.LngLat(116.368904, 39.913423),
+            new AMap.LngLat(116.382122, 39.901176),
+            new AMap.LngLat(116.387271, 39.912501),
+            new AMap.LngLat(116.398258, 39.904600)
+        ];
+
+        var polygon = new AMap.Polygon({
+            path: path,
+            fillColor: '#fff', // 多边形填充颜色
+            borderWeight: 2, // 线条宽度，默认为 1
+            strokeColor: 'red', // 线条颜色
+        });
+
+        map.add(polygon);
+
+
+        //绘制圆形
+        var circle = new AMap.Circle({
+            center: new AMap.LngLat(116.39, 39.9),  // 圆心位置
+            radius: 1000, // 圆半径
+            fillColor: 'red',   // 圆形填充颜色
+            strokeColor: '#fff', // 描边颜色
+            strokeWeight: 2, // 描边宽度
+        });
+
+        map.add(circle);
+
+
+        //绘制矩形
+        var southWest = new AMap.LngLat(116.356449, 39.859008)
+        var northEast = new AMap.LngLat(116.417901, 39.893797)
+        var bounds = new AMap.Bounds(southWest,northEast)
+        var rectangle = new AMap.Rectangle({
+            bounds:bounds,
+            strokeColor: 'red',
+            strokeWeight: 6,
+            strokeOpacity: 0.5,
+            strokeDasharray: [30, 10],
+            // strokeStyle还支持 solid
+            strokeStyle: 'dashed',
+            fillColor: 'blue',
+            fillOpacity: 0.5,
+            cursor: 'pointer',
+            zIndex: 50,
+        })
+
+        rectangle.setMap(map)
+        // 缩放地图到合适的视野级别
+        map.setFitView([rectangle])
+    </script>
+
+</body>
+
+</html>
